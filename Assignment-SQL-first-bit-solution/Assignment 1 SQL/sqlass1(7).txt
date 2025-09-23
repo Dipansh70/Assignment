@@ -1,0 +1,12 @@
+7. Create a Department table with following structure
+
+ANS = mysql> desc Department ;
++-----------------+---------------+------+-----+---------+-------+
+| Field           | Type          | Null | Key | Default | Extra |
++-----------------+---------------+------+-----+---------+-------+
+| Department_id   | decimal(10,0) | NO   | PRI | 0       |       |
+| Department_Name | varchar(50)   | NO   |     | NULL    |       |
+| Manger_Id       | decimal(10,0) | NO   |     | 0       |       |
+| Location_id     | decimal(10,0) | NO   |     | NULL    |       |
++-----------------+---------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
