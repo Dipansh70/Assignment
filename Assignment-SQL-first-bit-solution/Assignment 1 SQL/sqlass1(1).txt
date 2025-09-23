@@ -1,0 +1,19 @@
+1.  Login to MySQL and view all databases already present. You should get
+following result :
+
+Ans = mysql> show databases ;
++--------------------+
+| Database           |
++--------------------+
+| countries01        |
+| information_schema |
+| job                |
+| job_histry  |
+| mysql          |
+| performance_schema |
+| sakila   |
+| sept18   |
+| sys         |
+| world    |
++--------------------+
+10 rows in set (0.02 sec)
