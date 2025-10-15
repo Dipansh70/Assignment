@@ -1,0 +1,582 @@
+------------------------------------------------------- AIRLINE PROJECT ----------------------------------------------------
+===================================================================================
+                                                                          I. Flight Information
+               Capture and store essential flight details such as flight number, origin, destination,
+                                                               departure time, and arrival time.
+===================================================================================
+1. = CREATE DATABASE :
+
+mysql> CREATE DATABASE Airline ;
+Query OK, 1 row affected (0.04 sec)
+===================================================================================
+2. = USE DATABASE :
+
+mysql> use airline ;
+Database changed
+===================================================================================
+3. = CREATE A TABLE OF FLIGHT INFORMATION :
+
+mysql> create table flightinformation
+    -> ( flight_number varchar(10) primary key,
+    -> origin varchar(40) not null ,
+    -> destination varchar(50) not null ,
+    -> departure_time Datetime not null ,
+    -> arrival_time datetime not null
+    -> );
+Query OK, 0 rows affected (0.12 sec)
+===================================================================================
+4. = INSERT  THE DATA IN FLIGHT INFORMATION :
+
+ mysql> INSERT INTO FlightInformation (flight_number, origin, destination, departure_time, arrival_time)
+    -> VALUES
+    -> ('AI101', 'Delhi', 'Mumbai', '2025-10-15 07:00:00', '2025-10-15 09:15:00'),
+    -> ('AI102', 'Mumbai', 'Delhi', '2025-10-15 10:30:00', '2025-10-15 12:45:00'),
+    -> ('6E203', 'Bangalore', 'Kolkata', '2025-10-15 08:00:00', '2025-10-15 11:15:00'),
+    -> ('6E204', 'Kolkata', 'Bangalore', '2025-10-15 13:00:00', '2025-10-15 16:20:00'),
+    -> ('SG305', 'Chennai', 'Delhi', '2025-10-15 06:30:00', '2025-10-15 09:20:00'),
+    -> ('SG306', 'Delhi', 'Chennai', '2025-10-15 10:00:00', '2025-10-15 12:50:00'),
+    -> ('UK501', 'Hyderabad', 'Pune', '2025-10-15 09:15:00', '2025-10-15 10:50:00'),
+    -> ('UK502', 'Pune', 'Hyderabad', '2025-10-15 13:00:00', '2025-10-15 14:30:00'),
+    -> ('G8123', 'Delhi', 'Bangalore', '2025-10-15 11:30:00', '2025-10-15 14:30:00'),
+    -> ('G8124', 'Bangalore', 'Delhi', '2025-10-15 16:00:00', '2025-10-15 19:00:00'),
+    -> ('I5654', 'Mumbai', 'Goa', '2025-10-15 14:00:00', '2025-10-15 15:10:00'),
+    -> ('I5655', 'Goa', 'Mumbai', '2025-10-15 16:00:00', '2025-10-15 17:10:00'),
+    -> ('UK707', 'Kolkata', 'Delhi', '2025-10-15 07:30:00', '2025-10-15 10:10:00'),
+    -> ('UK708', 'Delhi', 'Kolkata', '2025-10-15 12:30:00', '2025-10-15 15:10:00'),
+    -> ('IX234', 'Cochin', 'Dubai', '2025-10-15 22:00:00', '2025-10-16 00:30:00'),
+    -> ('IX235', 'Dubai', 'Cochin', '2025-10-16 02:00:00', '2025-10-16 04:30:00'),
+    -> ('EK511', 'Delhi', 'Dubai', '2025-10-15 20:45:00', '2025-10-15 23:15:00'),
+    -> ('EK512', 'Dubai', 'Delhi', '2025-10-16 05:00:00', '2025-10-16 09:30:00'),
+    -> ('QR571', 'Mumbai', 'Doha', '2025-10-16 04:00:00', '2025-10-16 05:45:00'),
+    -> ('QR572', 'Doha', 'Mumbai', '2025-10-16 09:30:00', '2025-10-16 11:15:00'),
+    -> ('BA138', 'Delhi', 'London', '2025-10-16 02:30:00', '2025-10-16 07:00:00'),
+    -> ('BA139', 'London', 'Delhi', '2025-10-16 09:30:00', '2025-10-16 23:55:00'),
+    -> ('6E777', 'Lucknow', 'Mumbai', '2025-10-15 16:15:00', '2025-10-15 18:45:00'),
+    -> ('SG222', 'Pune', 'Delhi', '2025-10-15 12:00:00', '2025-10-15 14:15:00'),
+    -> ('AI333', 'Mumbai', 'Chennai', '2025-10-16 11:30:00', '2025-10-16 13:45:00');
+Query OK, 25 rows affected (0.03 sec)
+Records: 25  Duplicates: 0  Warnings: 0
+
+===================================================================================
+5. = SHOW THE ALL DATA OF FLIGHT INFORMATION :
+
+mysql> select * from flightinformation ;
++---------------+-----------+-------------+---------------------+---------------------+
+| flight_number | origin    | destination | departure_time      | arrival_time        |
++---------------+-----------+-------------+---------------------+---------------------+
+| 6E203         | Bangalore | Kolkata     | 2025-10-15 08:00:00 | 2025-10-15 11:15:00 |
+| 6E204         | Kolkata   | Bangalore   | 2025-10-15 13:00:00 | 2025-10-15 16:20:00 |
+| 6E777         | Lucknow   | Mumbai      | 2025-10-15 16:15:00 | 2025-10-15 18:45:00 |
+| AI101         | Delhi     | Mumbai      | 2025-10-15 07:00:00 | 2025-10-15 09:15:00 |
+| AI102         | Mumbai    | Delhi       | 2025-10-15 10:30:00 | 2025-10-15 12:45:00 |
+| AI333         | Mumbai    | Chennai     | 2025-10-16 11:30:00 | 2025-10-16 13:45:00 |
+| BA138         | Delhi     | London      | 2025-10-16 02:30:00 | 2025-10-16 07:00:00 |
+| BA139         | London    | Delhi       | 2025-10-16 09:30:00 | 2025-10-16 23:55:00 |
+| EK511         | Delhi     | Dubai       | 2025-10-15 20:45:00 | 2025-10-15 23:15:00 |
+| EK512         | Dubai     | Delhi       | 2025-10-16 05:00:00 | 2025-10-16 09:30:00 |
+| G8123         | Delhi     | Bangalore   | 2025-10-15 11:30:00 | 2025-10-15 14:30:00 |
+| G8124         | Bangalore | Delhi       | 2025-10-15 16:00:00 | 2025-10-15 19:00:00 |
+| I5654         | Mumbai    | Goa         | 2025-10-15 14:00:00 | 2025-10-15 15:10:00 |
+| I5655         | Goa       | Mumbai      | 2025-10-15 16:00:00 | 2025-10-15 17:10:00 |
+| IX234         | Cochin    | Dubai       | 2025-10-15 22:00:00 | 2025-10-16 00:30:00 |
+| IX235         | Dubai     | Cochin      | 2025-10-16 02:00:00 | 2025-10-16 04:30:00 |
+| QR571         | Mumbai    | Doha        | 2025-10-16 04:00:00 | 2025-10-16 05:45:00 |
+| QR572         | Doha      | Mumbai      | 2025-10-16 09:30:00 | 2025-10-16 11:15:00 |
+| SG222         | Pune      | Delhi       | 2025-10-15 12:00:00 | 2025-10-15 14:15:00 |
+| SG305         | Chennai   | Delhi       | 2025-10-15 06:30:00 | 2025-10-15 09:20:00 |
+| SG306         | Delhi     | Chennai     | 2025-10-15 10:00:00 | 2025-10-15 12:50:00 |
+| UK501         | Hyderabad | Pune        | 2025-10-15 09:15:00 | 2025-10-15 10:50:00 |
+| UK502         | Pune      | Hyderabad   | 2025-10-15 13:00:00 | 2025-10-15 14:30:00 |
+| UK707         | Kolkata   | Delhi       | 2025-10-15 07:30:00 | 2025-10-15 10:10:00 |
+| UK708         | Delhi     | Kolkata     | 2025-10-15 12:30:00 | 2025-10-15 15:10:00 |
++---------------+-----------+-------------+---------------------+---------------------+
+25 rows in set (0.00 sec)
+
+===================================================================================                                                        	    II. Passenger Information
+              Design tables to store passenger details, including names, contact information, and
+                                                                        seat preferences.
+===================================================================================  1. = CREATE A TABLE OF PASSENGER INFORMATION :
+
+mysql> create table passengerinformation (
+    -> passenger_id INT PRIMARY KEY AUTO_INCREMENT,
+    ->     full_name VARCHAR(100) NOT NULL,
+    ->     gender VARCHAR(10),
+    ->     age INT,
+    ->     contact_number VARCHAR(15),
+    ->     email VARCHAR(100),
+    ->     seat_preference VARCHAR(20),
+    ->     flight_number VARCHAR(10),
+    ->  FOREIGN KEY (flight_number) REFERENCES FlightInformation(flight_number)
+    -> );
+Query OK, 0 rows affected (0.12 sec)
+===================================================================================
+2. = INSERT THE VALUES IN PASSENGER INFORMATION :
+
+mysql> INSERT INTO PassengerInformation (full_name, gender, age, contact_number, email, seat_preference, flight_number)
+    -> VALUES
+    -> ('Rahul Mehta', 'Male', 29, '9876543210', 'rahul.mehta@gmail.com', 'Window', 'AI101'),
+    -> ('Priya Sharma', 'Female', 26, '9123456780', 'priya.sharma@yahoo.com', 'Aisle', 'AI101'),
+    -> ('Rohan Patel', 'Male', 35, '9998887776', 'rohan.patel@gmail.com', 'Middle', 'AI102'),
+    -> ('Neha Singh', 'Female', 24, '9876001234', 'neha.singh@gmail.com', 'Window', '6E203'),
+    -> ('Arjun Nair', 'Male', 31, '9876543211', 'arjun.nair@outlook.com', 'Aisle', '6E204'),
+    -> ('Sanya Kapoor', 'Female', 28, '7009008007', 'sanya.kapoor@gmail.com', 'Window', 'SG305'),
+    -> ('Amit Verma', 'Male', 40, '9876123450', 'amit.verma@yahoo.com', 'Aisle', 'SG306'),
+    -> ('Meera Iyer', 'Female', 34, '9012345678', 'meera.iyer@gmail.com', 'Window', 'UK501'),
+    -> ('Karan Malhotra', 'Male', 27, '8800456789', 'karan.m@gmail.com', 'Middle', 'UK502'),
+    -> ('Anjali Das', 'Female', 22, '7600456789', 'anjali.das@gmail.com', 'Aisle', 'G8123'),
+    -> ('Vikram Gupta', 'Male', 38, '9500345678', 'vikram.g@gmail.com', 'Window', 'G8124'),
+    -> ('Simran Kaur', 'Female', 30, '9874563210', 'simran.kaur@gmail.com', 'Window', 'I5654'),
+    -> ('Ravi Sharma', 'Male', 33, '9774563210', 'ravi.sharma@gmail.com', 'Aisle', 'I5655'),
+    -> ('Tina Joseph', 'Female', 25, '8080654321', 'tina.joseph@gmail.com', 'Window', 'UK707'),
+    -> ('Manoj Singh', 'Male', 37, '9090456711', 'manoj.singh@gmail.com', 'Aisle', 'IX234'),
+    -> ('Sara Khan', 'Female', 29, '9010056712', 'sara.khan@gmail.com', 'Middle', 'EK511'),
+    -> ('Ritesh Yadav', 'Male', 32, '8886677711', 'ritesh.yadav@gmail.com', 'Window', 'QR571'),
+    -> ('Pooja Rani', 'Female', 21, '9876678899', 'pooja.rani@gmail.com', 'Aisle', 'BA138'),
+    -> ('Harshit Jain', 'Male', 28, '9123456677', 'harshit.jain@gmail.com', 'Window', '6E777'),
+    -> ('Sneha Dubey', 'Female', 23, '9901234567', 'sneha.dubey@gmail.com', 'Middle', 'AI333');
+Query OK, 20 rows affected (0.02 sec)
+Records: 20  Duplicates: 0  Warnings: 0
+===================================================================================
+3. = SHOW TABLE OF PASSENGER INFOMATION USING FK :
+
+mysql> select * from passengerinformation ;
++--------------+----------------+--------+------+----------------+------------------------+-----------------+---------------+
+| passenger_id | full_name      | gender | age  | contact_number | email                  | seat_preference | flight_number |
++--------------+----------------+--------+------+----------------+------------------------+-----------------+---------------+
+|            1 | Rahul Mehta    | Male   |   29 | 9876543210     | rahul.mehta@gmail.com  | Window          | AI101         |
+|            2 | Priya Sharma   | Female |   26 | 9123456780     | priya.sharma@yahoo.com | Aisle           | AI101         |
+|            3 | Rohan Patel    | Male   |   35 | 9998887776     | rohan.patel@gmail.com  | Middle          | AI102         |
+|            4 | Neha Singh     | Female |   24 | 9876001234     | neha.singh@gmail.com   | Window          | 6E203         |
+|            5 | Arjun Nair     | Male   |   31 | 9876543211     | arjun.nair@outlook.com | Aisle           | 6E204         |
+|            6 | Sanya Kapoor   | Female |   28 | 7009008007     | sanya.kapoor@gmail.com | Window          | SG305         |
+|            7 | Amit Verma     | Male   |   40 | 9876123450     | amit.verma@yahoo.com   | Aisle           | SG306         |
+|            8 | Meera Iyer     | Female |   34 | 9012345678     | meera.iyer@gmail.com   | Window          | UK501         |
+|            9 | Karan Malhotra | Male   |   27 | 8800456789     | karan.m@gmail.com      | Middle          | UK502         |
+|           10 | Anjali Das     | Female |   22 | 7600456789     | anjali.das@gmail.com   | Aisle           | G8123         |
+|           11 | Vikram Gupta   | Male   |   38 | 9500345678     | vikram.g@gmail.com     | Window          | G8124         |
+|           12 | Simran Kaur    | Female |   30 | 9874563210     | simran.kaur@gmail.com  | Window          | I5654         |
+|           13 | Ravi Sharma    | Male   |   33 | 9774563210     | ravi.sharma@gmail.com  | Aisle           | I5655         |
+|           14 | Tina Joseph    | Female |   25 | 8080654321     | tina.joseph@gmail.com  | Window          | UK707         |
+|           15 | Manoj Singh    | Male   |   37 | 9090456711     | manoj.singh@gmail.com  | Aisle           | IX234         |
+|           16 | Sara Khan      | Female |   29 | 9010056712     | sara.khan@gmail.com    | Middle          | EK511         |
+|           17 | Ritesh Yadav   | Male   |   32 | 8886677711     | ritesh.yadav@gmail.com | Window          | QR571         |
+|           18 | Pooja Rani     | Female |   21 | 9876678899     | pooja.rani@gmail.com   | Aisle           | BA138         |
+|           19 | Harshit Jain   | Male   |   28 | 9123456677     | harshit.jain@gmail.com | Window          | 6E777         |
+|           20 | Sneha Dubey    | Female |   23 | 9901234567     | sneha.dubey@gmail.com  | Middle          | AI333         |
++--------------+----------------+--------+------+----------------+------------------------+-----------------+---------------+
+20 rows in set (0.00 sec)
+
+===================================================================================
+                                                                    III. Booking Records
+                        Create tables to manage booking records, linking passengers to specific flights,
+                                        recording reservation status, and payment details.
+===================================================================================
+1. = CREATE TABLE OF BOOKING RECORDS :
+
+mysql> CREATE TABLE BookingRecords (
+    ->     booking_id INT PRIMARY KEY AUTO_INCREMENT,
+    ->     passenger_id INT,
+    ->     flight_number VARCHAR(10),
+    ->     booking_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    ->     seat_number VARCHAR(10),
+    ->     reservation_status VARCHAR(20) DEFAULT 'Confirmed',
+    ->     payment_mode VARCHAR(20),
+    ->     amount_paid DECIMAL(10,2),
+    ->     FOREIGN KEY (passenger_id) REFERENCES PassengerInformation(passenger_id),
+    ->     FOREIGN KEY (flight_number) REFERENCES FlightInformation(flight_number)
+    -> );
+Query OK, 0 rows affected (0.11 sec)
+===================================================================================
+2. = INSERT INTO BOOKING RECORD :
+
+mysql> INSERT INTO BookingRecords
+    -> (passenger_id, flight_number, seat_number, reservation_status, payment_mode, amount_paid)
+    -> VALUES
+    -> (1, 'AI101', '12A', 'Confirmed', 'UPI', 5500.00),
+    -> (2, 'AI101', '14C', 'Confirmed', 'Credit Card', 6200.00),
+    -> (3, 'AI102', '18A', 'Confirmed', 'Net Banking', 4800.00),
+    -> (4, '6E203', '10B', 'Cancelled', 'UPI', 0.00),
+    -> (5, '6E204', '15C', 'Confirmed', 'Debit Card', 7200.00),
+    -> (6, 'SG305', '19A', 'Confirmed', 'Credit Card', 7100.00),
+    -> (7, 'SG306', '5A', 'Confirmed', 'UPI', 1500.00),
+    -> (8, 'UK501', '7C', 'Pending', 'UPI', 0.00),
+    -> (9, 'UK502', '22A', 'Confirmed', 'Net Banking', 5800.00),
+    -> (10, 'G8123', '13B', 'Confirmed', 'Credit Card', 5700.00),
+    -> (11, 'G8124', '8C', 'Confirmed', 'Debit Card', 4200.00),
+    -> (12, 'I5654', '11A', 'Confirmed', 'UPI', 4100.00),
+    -> (13, 'I5655', '15A', 'Confirmed', 'Credit Card', 19500.00),
+    -> (14, 'UK707', '9C', 'Confirmed', 'Net Banking', 20000.00),
+    -> (15, 'IX234', '16A', 'Cancelled', 'Debit Card', 0.00),
+    -> (16, 'EK511', '12B', 'Confirmed', 'UPI', 18800.00),
+    -> (17, 'QR571', '7A', 'Confirmed', 'Credit Card', 5600.00),
+    -> (18, 'BA138', '8C', 'Confirmed', 'Debit Card', 6000.00),
+    -> (19, '6E777', '10A', 'Pending', 'UPI', 0.00),
+    -> (20, 'AI333', '14A', 'Confirmed', 'Net Banking', 5300.00);
+Query OK, 20 rows affected (0.02 sec)
+Records: 20  Duplicates: 0  Warnings: 0
+===================================================================================
+3. = SHOW DATAOF BOOKING RECORDS :
+
+mysql> select * from BookingRecords ;
++------------+--------------+---------------+---------------------+-------------+--------------------+--------------+-------------+
+| booking_id | passenger_id | flight_number | booking_date        | seat_number | reservation_status | payment_mode | amount_paid |
++------------+--------------+---------------+---------------------+-------------+--------------------+--------------+-------------+
+|         70 |            1 | AI101         | 2025-10-15 22:35:42 | 12A         | Confirmed          | UPI          |     5500.00 |
+|         71 |            2 | AI101         | 2025-10-15 22:35:42 | 14C         | Confirmed          | Credit Card  |     6200.00 |
+|         72 |            3 | AI102         | 2025-10-15 22:35:42 | 18A         | Confirmed          | Net Banking  |     4800.00 |
+|         73 |            4 | 6E203         | 2025-10-15 22:35:42 | 10B         | Cancelled          | UPI          |        0.00 |
+|         74 |            5 | 6E204         | 2025-10-15 22:35:42 | 15C         | Confirmed          | Debit Card   |     7200.00 |
+|         75 |            6 | SG305         | 2025-10-15 22:35:42 | 19A         | Confirmed          | Credit Card  |     7100.00 |
+|         76 |            7 | SG306         | 2025-10-15 22:35:42 | 5A          | Confirmed          | UPI          |     1500.00 |
+|         77 |            8 | UK501         | 2025-10-15 22:35:42 | 7C          | Pending            | UPI          |        0.00 |
+|         78 |            9 | UK502         | 2025-10-15 22:35:42 | 22A         | Confirmed          | Net Banking  |     5800.00 |
+|         79 |           10 | G8123         | 2025-10-15 22:35:42 | 13B         | Confirmed          | Credit Card  |     5700.00 |
+|         80 |           11 | G8124         | 2025-10-15 22:35:42 | 8C          | Confirmed          | Debit Card   |     4200.00 |
+|         81 |           12 | I5654         | 2025-10-15 22:35:42 | 11A         | Confirmed          | UPI          |     4100.00 |
+|         82 |           13 | I5655         | 2025-10-15 22:35:42 | 15A         | Confirmed          | Credit Card  |    19500.00 |
+|         83 |           14 | UK707         | 2025-10-15 22:35:42 | 9C          | Confirmed          | Net Banking  |    20000.00 |
+|         84 |           15 | IX234         | 2025-10-15 22:35:42 | 16A         | Cancelled          | Debit Card   |        0.00 |
+|         85 |           16 | EK511         | 2025-10-15 22:35:42 | 12B         | Confirmed          | UPI          |    18800.00 |
+|         86 |           17 | QR571         | 2025-10-15 22:35:42 | 7A          | Confirmed          | Credit Card  |     5600.00 |
+|         87 |           18 | BA138         | 2025-10-15 22:35:42 | 8C          | Confirmed          | Debit Card   |     6000.00 |
+|         88 |           19 | 6E777         | 2025-10-15 22:35:42 | 10A         | Pending            | UPI          |        0.00 |
+|         89 |           20 | AI333         | 2025-10-15 22:35:42 | 14A         | Confirmed          | Net Banking  |     5300.00 |
++------------+--------------+---------------+---------------------+-------------+--------------------+--------------+-------------+
+20 rows in set (0.00 sec)
+
+===================================================================================
+			IV. Flight Crew Information
+                 Capture and manage information about flight crew members, including pilots and
+			               attendants.
+===================================================================================
+1. = CREATE TABLE OF FLIGHT CREW TABLE :
+
+mysql> CREATE TABLE FlightCrewInformation (
+    ->     crew_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     full_name VARCHAR(100) NOT NULL,
+    ->     role VARCHAR(50) NOT NULL,             -- Pilot / Co-Pilot / Attendant
+    ->     experience_years INT,
+    ->     contact_number VARCHAR(15),
+    ->     email VARCHAR(100),
+    ->     flight_number VARCHAR(10),
+    ->     FOREIGN KEY (flight_number) REFERENCES FlightInformation(flight_number)
+    -> );
+Query OK, 0 rows affected (0.17 sec)
+
+mysql>
+===================================================================================
+2. = INSERT INTO FLIGHT CREW INFORMATION :
+
+mysql>  INSERT INTO FlightCrewInformation
+    -> (full_name, role, experience_years, contact_number, email, flight_number)
+    -> VALUES
+    -> ('Capt. Rajiv Menon', 'Pilot', 15, '9876541111', 'rajiv.menon@airindia.com', 'AI101'),
+    -> ('Capt. Neha Kapoor', 'Co-Pilot', 8, '9876542222', 'neha.kapoor@airindia.com', 'AI101'),
+    -> ('Rohit Sharma', 'Flight Attendant', 6, '9876543333', 'rohit.sharma@airindia.com', 'AI101'),
+    ->
+    -> ('Capt. Arjun Patel', 'Pilot', 12, '9876544444', 'arjun.patel@indigo.com', '6E203'),
+    -> ('Priya Verma', 'Co-Pilot', 5, '9876545555', 'priya.verma@indigo.com', '6E203'),
+    -> ('Simran Joshi', 'Flight Attendant', 4, '9876546666', 'simran.joshi@indigo.com', '6E203'),
+    ->
+    -> ('Capt. Rohit Nair', 'Pilot', 10, '9876547777', 'rohit.nair@vistara.com', 'UK501'),
+    -> ('Anita Desai', 'Co-Pilot', 6, '9876548888', 'anita.desai@vistara.com', 'UK501'),
+    -> ('Sanjay Mehta', 'Flight Attendant', 7, '9876549999', 'sanjay.mehta@vistara.com', 'UK501'),
+    ->
+    -> ('Capt. Pooja Reddy', 'Pilot', 9, '9876501111', 'pooja.reddy@spicejet.com', 'SG305'),
+    -> ('Ravi Khanna', 'Co-Pilot', 5, '9876502222', 'ravi.khanna@spicejet.com', 'SG305'),
+    -> ('Sneha Joshi', 'Flight Attendant', 3, '9876503333', 'sneha.joshi@spicejet.com', 'SG305'),
+    ->
+    -> ('Capt. Manish Bhatia', 'Pilot', 14, '9876504444', 'manish.bhatia@goair.com', 'G8123'),
+    -> ('Divya Sharma', 'Co-Pilot', 9, '9876505555', 'divya.sharma@goair.com', 'G8123'),
+    -> ('Rohit Yadav', 'Flight Attendant', 6, '9876506666', 'rohit.yadav@goair.com', 'G8123'),
+    ->
+    -> ('Capt. Anil Kumar', 'Pilot', 11, '9876507777', 'anil.kumar@emirates.com', 'EK511'),
+    -> ('Fatima Sheikh', 'Co-Pilot', 8, '9876508888', 'fatima.sheikh@emirates.com', 'EK511'),
+    -> ('Karan Jain', 'Flight Attendant', 5, '9876509999', 'karan.jain@emirates.com', 'EK511'),
+    ->
+    -> ('Capt. Deepa Sinha', 'Pilot', 13, '9876511111', 'deepa.sinha@qatar.com', 'QR571'),
+    -> ('Mohit Rana', 'Flight Attendant', 7, '9876512222', 'mohit.rana@qatar.com', 'QR571');
+Query OK, 20 rows affected (0.03 sec)
+Records: 20  Duplicates: 0  Warnings: 0
+===================================================================================
+3. = SHOW DATA OF FLIGHT CREW INFORMATION :
+
+mysql> SELECT * FROM FlightCrewInformation;
++---------+---------------------+------------------+------------------+----------------+----------------------------+---------------+
+| crew_id | full_name           | role             | experience_years | contact_number | email                      | flight_number |
++---------+---------------------+------------------+------------------+----------------+----------------------------+---------------+
+|       1 | Capt. Rajiv Menon   | Pilot            |               15 | 9876541111     | rajiv.menon@airindia.com   | AI101         |
+|       2 | Capt. Neha Kapoor   | Co-Pilot         |                8 | 9876542222     | neha.kapoor@airindia.com   | AI101         |
+|       3 | Rohit Sharma        | Flight Attendant |                6 | 9876543333     | rohit.sharma@airindia.com  | AI101         |
+|       4 | Capt. Arjun Patel   | Pilot            |               12 | 9876544444     | arjun.patel@indigo.com     | 6E203         |
+|       5 | Priya Verma         | Co-Pilot         |                5 | 9876545555     | priya.verma@indigo.com     | 6E203         |
+|       6 | Simran Joshi        | Flight Attendant |                4 | 9876546666     | simran.joshi@indigo.com    | 6E203         |
+|       7 | Capt. Rohit Nair    | Pilot            |               10 | 9876547777     | rohit.nair@vistara.com     | UK501         |
+|       8 | Anita Desai         | Co-Pilot         |                6 | 9876548888     | anita.desai@vistara.com    | UK501         |
+|       9 | Sanjay Mehta        | Flight Attendant |                7 | 9876549999     | sanjay.mehta@vistara.com   | UK501         |
+|      10 | Capt. Pooja Reddy   | Pilot            |                9 | 9876501111     | pooja.reddy@spicejet.com   | SG305         |
+|      11 | Ravi Khanna         | Co-Pilot         |                5 | 9876502222     | ravi.khanna@spicejet.com   | SG305         |
+|      12 | Sneha Joshi         | Flight Attendant |                3 | 9876503333     | sneha.joshi@spicejet.com   | SG305         |
+|      13 | Capt. Manish Bhatia | Pilot            |               14 | 9876504444     | manish.bhatia@goair.com    | G8123         |
+|      14 | Divya Sharma        | Co-Pilot         |                9 | 9876505555     | divya.sharma@goair.com     | G8123         |
+|      15 | Rohit Yadav         | Flight Attendant |                6 | 9876506666     | rohit.yadav@goair.com      | G8123         |
+|      16 | Capt. Anil Kumar    | Pilot            |               11 | 9876507777     | anil.kumar@emirates.com    | EK511         |
+|      17 | Fatima Sheikh       | Co-Pilot         |                8 | 9876508888     | fatima.sheikh@emirates.com | EK511         |
+|      18 | Karan Jain          | Flight Attendant |                5 | 9876509999     | karan.jain@emirates.com    | EK511         |
+|      19 | Capt. Deepa Sinha   | Pilot            |               13 | 9876511111     | deepa.sinha@qatar.com      | QR571         |
+|      20 | Mohit Rana          | Flight Attendant |                7 | 9876512222     | mohit.rana@qatar.com       | QR571         |
++---------+---------------------+------------------+------------------+----------------+----------------------------+---------------+
+20 rows in set (0.00 sec)
+
+===================================================================================
+			         V. Aircraft Information
+                      Design tables to store details about aircraft, including registration numbers,
+                                                           models, and seating configurations.
+===================================================================================
+1. = CREATE AIRCRAFT INFORMATION TABLE :
+
+mysql>  CREATE TABLE AircraftInformation (
+    ->     aircraft_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     registration_number VARCHAR(20) UNIQUE NOT NULL,
+    ->     model VARCHAR(50) NOT NULL,
+    ->     manufacturer VARCHAR(50),
+    ->     seating_capacity INT,
+    ->     number_of_rows INT,
+    ->     seats_per_row INT,
+    ->     flight_number VARCHAR(10),
+    ->     FOREIGN KEY (flight_number) REFERENCES FlightInformation(flight_number)
+    -> );
+Query OK, 0 rows affected (0.18 sec)
+===================================================================================
+2. = INSERT INTO AIRCRAFT INFORMATION :
+
+mysql> INSERT INTO AircraftInformation
+    -> (registration_number, model, manufacturer, seating_capacity, number_of_rows, seats_per_row, flight_number)
+    -> VALUES
+    -> ('VT-ALB', 'Airbus A320', 'Airbus', 180, 30, 6, '6E203'),
+    -> ('VT-ALC', 'Airbus A321', 'Airbus', 220, 36, 6, '6E204'),
+    -> ('VT-AID', 'Boeing 777', 'Boeing', 396, 44, 9, 'AI101'),
+    -> ('VT-AIE', 'Boeing 787 Dreamliner', 'Boeing', 300, 40, 8, 'AI102'),
+    -> ('G-BA123', 'Boeing 747', 'Boeing', 416, 46, 9, 'BA138'),
+    -> ('G-BA124', 'Boeing 777', 'Boeing', 380, 42, 9, 'BA139'),
+    -> ('A6-EKM', 'Airbus A380', 'Airbus', 525, 50, 10, 'EK511'),
+    -> ('A6-EKN', 'Boeing 777-300ER', 'Boeing', 396, 44, 9, 'EK512'),
+    -> ('VT-GO1', 'Airbus A320neo', 'Airbus', 180, 30, 6, 'G8123'),
+    -> ('VT-GO2', 'Airbus A321neo', 'Airbus', 220, 36, 6, 'G8124'),
+    -> ('VT-IND1', 'ATR 72', 'ATR', 72, 18, 4, 'I5654'),
+    -> ('VT-IND2', 'Boeing 737', 'Boeing', 162, 27, 6, 'I5655'),
+    -> ('VT-IX01', 'Airbus A320', 'Airbus', 180, 30, 6, 'IX234'),
+    -> ('VT-IX02', 'Airbus A321', 'Airbus', 220, 36, 6, 'IX235'),
+    -> ('A7-BAQ', 'Boeing 787', 'Boeing', 254, 38, 7, 'QR571'),
+    -> ('A7-BAR', 'Boeing 777', 'Boeing', 396, 44, 9, 'QR572'),
+    -> ('VT-SG1', 'Boeing 737 MAX', 'Boeing', 189, 31, 6, 'SG305'),
+    -> ('VT-SG2', 'Airbus A320', 'Airbus', 180, 30, 6, 'SG306'),
+    -> ('VT-UK1', 'Airbus A321', 'Airbus', 220, 36, 6, 'UK501'),
+    -> ('VT-UK2', 'Airbus A320neo', 'Airbus', 180, 30, 6, 'UK502'),
+    -> ('VT-UK3', 'Airbus A321neo', 'Airbus', 220, 36, 6, 'UK707'),
+    -> ('VT-UK4', 'Boeing 737 MAX', 'Boeing', 189, 31, 6, 'UK708');
+Query OK, 22 rows affected (0.03 sec)
+Records: 22  Duplicates: 0  Warnings: 0
+===================================================================================
+3. = SHOW THE DATA OF AIR CRAFT INFORMATION :
+
+mysql> SELECT * FROM AircraftInformation;
++-------------+---------------------+-----------------------+--------------+------------------+----------------+---------------+---------------+
+| aircraft_id | registration_number | model                 | manufacturer | seating_capacity | number_of_rows | seats_per_row | flight_number |
++-------------+---------------------+-----------------------+--------------+------------------+----------------+---------------+---------------+
+|           1 | VT-ALB              | Airbus A320           | Airbus       |              180 |             30 |             6 | 6E203         |
+|           2 | VT-ALC              | Airbus A321           | Airbus       |              220 |             36 |             6 | 6E204         |
+|           3 | VT-AID              | Boeing 777            | Boeing       |              396 |             44 |             9 | AI101         |
+|           4 | VT-AIE              | Boeing 787 Dreamliner | Boeing       |              300 |             40 |             8 | AI102         |
+|           5 | G-BA123             | Boeing 747            | Boeing       |              416 |             46 |             9 | BA138         |
+|           6 | G-BA124             | Boeing 777            | Boeing       |              380 |             42 |             9 | BA139         |
+|           7 | A6-EKM              | Airbus A380           | Airbus       |              525 |             50 |            10 | EK511         |
+|           8 | A6-EKN              | Boeing 777-300ER      | Boeing       |              396 |             44 |             9 | EK512         |
+|           9 | VT-GO1              | Airbus A320neo        | Airbus       |              180 |             30 |             6 | G8123         |
+|          10 | VT-GO2              | Airbus A321neo        | Airbus       |              220 |             36 |             6 | G8124         |
+|          11 | VT-IND1             | ATR 72                | ATR          |               72 |             18 |             4 | I5654         |
+|          12 | VT-IND2             | Boeing 737            | Boeing       |              162 |             27 |             6 | I5655         |
+|          13 | VT-IX01             | Airbus A320           | Airbus       |              180 |             30 |             6 | IX234         |
+|          14 | VT-IX02             | Airbus A321           | Airbus       |              220 |             36 |             6 | IX235         |
+|          15 | A7-BAQ              | Boeing 787            | Boeing       |              254 |             38 |             7 | QR571         |
+|          16 | A7-BAR              | Boeing 777            | Boeing       |              396 |             44 |             9 | QR572         |
+|          17 | VT-SG1              | Boeing 737 MAX        | Boeing       |              189 |             31 |             6 | SG305         |
+|          18 | VT-SG2              | Airbus A320           | Airbus       |              180 |             30 |             6 | SG306         |
+|          19 | VT-UK1              | Airbus A321           | Airbus       |              220 |             36 |             6 | UK501         |
+|          20 | VT-UK2              | Airbus A320neo        | Airbus       |              180 |             30 |             6 | UK502         |
+|          21 | VT-UK3              | Airbus A321neo        | Airbus       |              220 |             36 |             6 | UK707         |
+|          22 | VT-UK4              | Boeing 737 MAX        | Boeing       |              189 |             31 |             6 | UK708         |
++-------------+---------------------+-----------------------+--------------+------------------+----------------+---------------+---------------+
+22 rows in set (0.00 sec)
+
+===================================================================================
+			VI. Itinerary Management
+                    Implement tables to handle passenger itineraries, connecting multiple flights for
+                                                         seamless travel arrangements.
+===================================================================================
+1. = CREATE TABLE OF ITINERARY :
+
+mysql> CREATE TABLE Itinerary (
+    ->     itinerary_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     passenger_id INT,
+    ->     itinerary_name VARCHAR(100),      -- e.g., "Trip to Goa"
+    ->     start_date DATE,
+    ->     end_date DATE,
+    ->     FOREIGN KEY (passenger_id) REFERENCES PassengerInformation(passenger_id)
+    -> );
+Query OK, 0 rows affected (0.17 sec)
+===================================================================================
+2. = CREATE TABLE ITINERARY FLIGHTS
+
+mysql> CREATE TABLE ItineraryFlights (
+    ->     itinerary_flight_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     itinerary_id INT,
+    ->     flight_number VARCHAR(10),
+    ->     sequence_number INT,               -- flight order in itinerary
+    ->     FOREIGN KEY (itinerary_id) REFERENCES Itinerary(itinerary_id),
+    ->     FOREIGN KEY (flight_number) REFERENCES FlightInformation(flight_number)
+    -> );
+Query OK, 0 rows affected (0.14 sec)
+===================================================================================
+3. =  INSERT DATA  INTO ITINERARY TABLE 
+
+mysql> INSERT INTO Itinerary (passenger_id, itinerary_name, start_date, end_date)
+    -> VALUES
+    -> (1, 'Delhi to Goa Trip', '2025-10-15', '2025-10-17'),
+    -> (2, 'Bangalore to London Vacation', '2025-10-15', '2025-10-20');
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+===================================================================================
+4. = INSERT DATA INTO ITINERARY FLIGHTS
+
+mysql> INSERT INTO ItineraryFlights (itinerary_id, flight_number, sequence_number)
+    -> VALUES
+    -> (1, 'AI101', 1),  -- Delhi → Mumbai
+    -> (1, 'I5654', 2),  -- Mumbai → Goa
+    -> (2, '6E203', 1),  -- Bangalore → Kolkata
+    -> (2, 'BA138', 2);  -- Delhi → London
+Query OK, 4 rows affected (0.02 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+===================================================================================
+5. = SHOW DATA FROM GIVEN TABLE 
+
+mysql> SELECT
+    ->     p.full_name,
+    ->     f.flight_number,
+    ->     f.origin,
+    ->     f.destination,
+    ->     f.departure_time,
+    ->     f.arrival_time,
+    ->     b.seat_number,
+    ->     b.reservation_status
+    -> FROM BookingRecords b
+    -> JOIN PassengerInformation p ON b.passenger_id = p.passenger_id
+    -> JOIN FlightInformation f ON b.flight_number = f.flight_number
+    -> WHERE p.passenger_id = 1;  -- replace 1 with the passenger_id you want
++-------------+---------------+--------+-------------+---------------------+---------------------+-------------+--------------------+
+| full_name   | flight_number | origin | destination | departure_time      | arrival_time        | seat_number | reservation_status |
++-------------+---------------+--------+-------------+---------------------+---------------------+-------------+--------------------+
+| Rahul Mehta | AI101         | Delhi  | Mumbai      | 2025-10-15 07:00:00 | 2025-10-15 09:15:00 | 12A         | Confirmed          |
++-------------+---------------+--------+-------------+---------------------+---------------------+-------------+--------------------+
+1 row in set (0.01 sec)
+
+===================================================================================
+			VII. Pricing and Fare Information
+              Create tables to manage pricing and fare information for different flight routes and
+			                   seat classes.
+===================================================================================
+1. = CREATE TABLE FARE INFORMATION 
+
+mysql>  CREATE TABLE FareInformation (
+    ->     fare_id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     flight_number VARCHAR(10),
+    ->     seat_class VARCHAR(20),            -- Economy, Business, First Class
+    ->     price DECIMAL(10,2),
+    ->     FOREIGN KEY (flight_number) REFERENCES FlightInformation(flight_number)
+    -> );
+Query OK, 0 rows affected (0.12 sec)
+===================================================================================
+2. = INSERT DATA IN FARE INFORMATION 
+
+mysql> INSERT INTO FareInformation (flight_number, seat_class, price)
+    -> VALUES
+    -> ('6E203', 'Economy', 5500.00),
+    -> ('6E203', 'Business', 12000.00),
+    -> ('6E203', 'First Class', 18000.00),
+    ->
+    -> ('6E204', 'Economy', 5200.00),
+    -> ('6E204', 'Business', 11500.00),
+    -> ('6E204', 'First Class', 17500.00),
+    ->
+    -> ('AI101', 'Economy', 4800.00),
+    -> ('AI101', 'Business', 10000.00),
+    -> ('AI101', 'First Class', 15000.00),
+    ->
+    -> ('AI102', 'Economy', 4700.00),
+    -> ('AI102', 'Business', 9800.00),
+    -> ('AI102', 'First Class', 14800.00),
+    ->
+    -> ('BA138', 'Economy', 72000.00),
+    -> ('BA138', 'Business', 150000.00),
+    -> ('BA138', 'First Class', 250000.00),
+    ->
+    -> ('BA139', 'Economy', 71000.00),
+    -> ('BA139', 'Business', 148000.00),
+    -> ('BA139', 'First Class', 245000.00),
+    ->
+    -> ('EK511', 'Economy', 15000.00),
+    -> ('EK511', 'Business', 35000.00),
+    -> ('EK511', 'First Class', 60000.00),
+    ->
+    -> ('EK512', 'Economy', 15500.00),
+    -> ('EK512', 'Business', 36000.00),
+    -> ('EK512', 'First Class', 61000.00);
+Query OK, 24 rows affected (0.04 sec)
+Records: 24  Duplicates: 0  Warnings: 0
+===================================================================================
+3. = SHOW DATA OF FARE INFOMATION 
+
+mysql> SELECT * FROM FareInformation;
++---------+---------------+-------------+-----------+
+| fare_id | flight_number | seat_class  | price     |
++---------+---------------+-------------+-----------+
+|       1 | 6E203         | Economy     |   5500.00 |
+|       2 | 6E203         | Business    |  12000.00 |
+|       3 | 6E203         | First Class |  18000.00 |
+|       4 | 6E204         | Economy     |   5200.00 |
+|       5 | 6E204         | Business    |  11500.00 |
+|       6 | 6E204         | First Class |  17500.00 |
+|       7 | AI101         | Economy     |   4800.00 |
+|       8 | AI101         | Business    |  10000.00 |
+|       9 | AI101         | First Class |  15000.00 |
+|      10 | AI102         | Economy     |   4700.00 |
+|      11 | AI102         | Business    |   9800.00 |
+|      12 | AI102         | First Class |  14800.00 |
+|      13 | BA138         | Economy     |  72000.00 |
+|      14 | BA138         | Business    | 150000.00 |
+|      15 | BA138         | First Class | 250000.00 |
+|      16 | BA139         | Economy     |  71000.00 |
+|      17 | BA139         | Business    | 148000.00 |
+|      18 | BA139         | First Class | 245000.00 |
+|      19 | EK511         | Economy     |  15000.00 |
+|      20 | EK511         | Business    |  35000.00 |
+|      21 | EK511         | First Class |  60000.00 |
+|      22 | EK512         | Economy     |  15500.00 |
+|      23 | EK512         | Business    |  36000.00 |
+|      24 | EK512         | First Class |  61000.00 |
++---------+---------------+-------------+-----------+
+24 rows in set (0.01 sec)
+===================================================================================
+		           THIS IS ALL ABOUT OF AIRLINE PROJECT 
+===================================================================================
+
+
+
+
+
+
+
+
+
+
+
