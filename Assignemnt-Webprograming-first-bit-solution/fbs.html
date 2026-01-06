@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documentation Page</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+.container{
+    display:flex;
+    min-height:100vh;
+}
+
+.sidebar{
+    width:260px;
+    background:black;
+    color:white;
+    padding:20px;
+    position:fixed;  /* There are 4 type of position = fixed , relative , absulute and stiky*/
+    height:100vh;
+}
+
+.sidebar h2{
+    margin-bottom:20px;
+}
+
+.sidebar a{
+    display:block;
+    text-decoration:none;
+    color:#aaa;
+    padding:10px;
+    margin-bottom:5px;
+    border-radius:5px;
+}
+
+.sidebar a:hover{
+    background: #fff;;
+    color:black;
+}
+
+
+.content{
+    margin-left:280px;
+    padding:40px;
+    flex:1;
+}
+
+section{
+    margin-bottom:60px;
+}
+
+h3{
+    margin-bottom:10px;
+}
+
+p{
+    line-height:1.6;
+}
+
+
+pre{
+    line-height:1.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+        <h2>Documentation</h2>
+        <hr>
+        <a href="#intro">Introduction</a>
+        <a href="#start">Getting Started</a>
+        <a href="#syntax">Syntax Overview</a>
+        <a href="#code">Code Syntax</a>
+        <a href="#best">Best Practices</a>
+    </div>
+
+
+    <div class="content">
+
+        <section id="intro">
+            <h3>Introduction</h3>
+            <p>
+                This technical documentation prvides an overview of how and structure your code forbetter <br> readablity and performace . It covers best practices syntex , standards and examples for modern <br> web devlopment. 
+            </p>
+        </section>
+
+        <section id="start">
+            <h3>Getting Started</h3>
+            <p>
+                Before you begin, ensure you have a basic text editor and a modern web browser installed . <br> Famillarity with HTML and CSS is helpful for following along.
+            </p>
+        </section>
+
+        <section id="syntax">
+            <h3>Syntax Overview</h3>
+            <p>
+                HTML provides the structure of the page, while CSS styles its visual appearance , It's important to <br> maintain clean and semantic code for accessibilty and maintainability.
+            </p>
+        </section>
+
+    <section id="code">
+        <h3>Code Syntax</h3>
+            <pre><code>
+                &lt;!DOCTYPE html&gt;
+                &lt;html&gt;
+                &lt;head&gt;
+                &lt;title&gt;Documentation Page&lt;/title&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                &lt;h1&gt;Hello World&lt;/h1&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;
+            </code></pre>
+     </section>
+
+     <section id="best">
+            <h3>Best Practices</h3>
+            <p>
+                Use semantic HTML, keep CSS clean, and write readable code.
+            </p>
+     </section>
+
+    </div>
+</div>
+</body>
+</html>
