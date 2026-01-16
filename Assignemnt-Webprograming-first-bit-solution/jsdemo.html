@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS first class</title>
+
+    <style>
+        div{
+            margin: auto;
+            border: 2px solid black;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+    <h3>Sum of two Numbers</h3>
+
+    Enter the Number 1 
+    <input type="text" id="Inp1">
+    <br>
+
+    Enter the Number 2
+    <input type="text" id="Inp2">
+    <br>
+
+    <button onclick="calci('+')">Add</button>
+    <button onclick="calci('-')">Sub</button>
+    <button onclick="calci('*')">Mul</button>
+    <button onclick="calci('/')">Div</button>
+    <br>
+
+    <span id="res">Output will be here</span>
+
+<script>
+
+    function calci(op){
+                let No1 = parseInt(document.getElementById("Inp1").value);
+                let No2 = parseInt(document.getElementById("Inp2").value);
+                if(op=='+'){
+                    res =  No1 + No2;
+                }
+                else if(op=='-'){
+                    res =  No1 - No2;
+                }
+                else if(op=='*'){
+                    res =  No1 * No2;
+                }
+                else{
+                    res =  No1 / No2;
+                }
+         document.getElementById("res").innerText = "Result is " + res ;
+    }
+</script>
+    </div>
+</body>
+</html>

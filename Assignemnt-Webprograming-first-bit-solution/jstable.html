@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Tables</title>
+
+    <style>
+        div{
+            border: 1px solid olivedrab;
+            text-align: center;
+            display: flexbox;
+        }
+        table, tr, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 6px;
+        }
+        table {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+    <h3>Multiple Table Generator</h3>
+
+    Enter Numbers <input type="text" id="num">
+    <br><br>
+
+    <button onclick="createTables()">Create Tables</button>
+    <br><br>
+
+    <div id="output"></div>
+
+<script>
+    function createTables() {
+        let n = parseInt(document.getElementById("num").value);
+        let output = "";
+
+        for (let t = 1; t <= n; t++) {
+            output += "<h4>Table of " + t + "</h4>";
+            output += "<table>";
+
+            for (let i = 1; i <= 10; i++) {
+                output += "<tr>";
+                output += "<td>" + t + " × " + i + "</td>";
+                output += "<td>" + (t * i) + "</td>";
+                output += "</tr>";
+            }
+
+            output += "</table>";
+        }
+
+        document.getElementById("output").innerHTML = output;
+    }
+    </script>
+</div>
+</body>
+</html>

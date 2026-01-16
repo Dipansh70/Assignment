@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String method uses </title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h3>Java script builting method uses</h3>
+    <script>
+     
+    let str = " Hello JavaScript World ";
+
+//pelidrome check 
+let a = "madam";
+let isPal = a === a.split("").reverse().join("");
+console.log(isPal); // true
+
+
+        //reverse the string 
+let s = "hello";
+let rev = s.split("").reverse().join("");
+console.log(rev); // olleh
+
+// length
+console.log(str.length);
+
+// toUpperCase & toLowerCase
+console.log(str.toUpperCase());
+console.log(str.toLowerCase());
+
+// charAt
+console.log(str.charAt(1));
+
+// indexOf & lastIndexOf
+console.log(str.indexOf("o"));
+console.log(str.lastIndexOf("o"));
+
+// includes
+console.log(str.includes("Java"));
+
+// startsWith & endsWith
+console.log(str.startsWith(" Hello"));
+console.log(str.endsWith("World "));
+
+// slice
+console.log(str.slice(1, 6));
+
+// substring
+console.log(str.substring(1, 6));
+
+// substr (deprecated)
+console.log(str.substr(1, 5));
+
+// replace & replaceAll
+console.log(str.replace("World", "JS"));
+console.log("a,a,a".replaceAll("a", "b"));
+
+// trim, trimStart, trimEnd
+console.log(str.trim());
+console.log(str.trimStart());
+console.log(str.trimEnd());
+
+// split
+let data = "HTML,CSS,JS";
+console.log(data.split(","));
+
+// concat
+let s1 = "Hello";
+let s2 = " JS";
+console.log(s1.concat(s2));
+
+// repeat
+console.log("Hi ".repeat(3));
+
+// match
+console.log("abc123".match(/[a-z]+/));
+
+    </script>
+</body>
+</html>
