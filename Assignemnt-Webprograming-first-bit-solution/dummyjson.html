@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Cards</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background:#f4f4f4;
+    }
+
+    button{
+        padding:10px 20px;
+        margin:20px;
+        font-size:16px;
+        cursor:pointer;
+    }
+
+    #content{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:20px;
+    }
+
+    .card{
+        width:260px;
+        background:white;
+        border-radius:10px;
+        box-shadow:0 4px 8px rgba(0,0,0,0.2);
+        overflow:hidden;
+        text-align:center;
+    }
+
+    .card img{
+        width:100%;
+        height:180px;
+        object-fit:cover;
+    }
+
+    .card h3{
+        margin:10px 0;
+    }
+
+    .ingredients{
+        display:none;
+        padding:10px;
+        background:#fafafa;
+        text-align:left;
+    }
+
+    .ingredients div{
+        font-size:14px;
+        margin:4px 0;
+    }
+
+    .show-btn{
+        background:#ff6b6b;
+        color:white;
+        border:none;
+        width:100%;
+        padding:10px;
+        cursor:pointer;
+    }
+</style>
+</head>
+<body>
+
+<button onclick="displayOnData()"> Display All Food Items </button>
+
+<div id="content"></div>
+
+<script>
+
+function displayOnData(){
+    fetch("https://dummyjson.com/recipes")
+    .then(res => res.json())
+    .then(data => displaypage(data));
+}
+
+function displaypage(data){
+    let html = "";
+
+    for(let i = 0; i < data.recipes.length; i++){
+        let r = data.recipes[i];
+
+        html += `
+        <div class="card">
+            <img src="${r.image}">
+            <h3>${r.name}</h3>
+            <button class="show-btn" onclick="toggleIngredients(${r.id})">
+                Show Ingredients
+            </button>
+
+            <div class="ingredients" id="ing-${r.id}">
+        `;
+
+        for(let j = 0; j < r.ingredients.length; j++){
+            html += `<div>✔ ${r.ingredients[j]}</div>`;
+        }
+
+        html += `
+            </div>
+        </div>
+        `;
+    }
+
+    document.getElementById("content").innerHTML = html;
+}
+
+function toggleIngredients(id){
+    let box = document.getElementById("ing-" + id);
+
+    if(box.style.display === "block"){
+        box.style.display = "none";
+    } else {
+        box.style.display = "block";
+    }
+}
+
+</script>
+
+</body>
+</html>
