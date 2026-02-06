@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.box{
+    height: 100px;
+    width: 40%;
+    border: 2px solid rgba(164, 204, 191, 0.5);
+    margin: 12px;
+    padding: 1px;
+    border-radius: 10px;
+    margin-left: 30%;
+}
+h1{
+    color: aqua;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    text-decoration: underline;
+    position: fixed;
+    z-index: -1;
+}
+
+p{
+ text-align: center;
+ text-decoration: line-through;
+ color: brown;
+ font-weight: 800;
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ border: 2px solid black;
+ line-height: 10;
+ text-transform: uppercase;
+    font-size: 3rem;
+    background-image: url(/trian_PNG101333.png);
+    background-size: auto 100%;
+;
+}
+body{
+    background-color: rgb(162, 140, 196);
+}
+ul{
+    display: flex;
+    gap: 45px;
+    background-color: rgb(190, 169, 169);
+    list-style: none;
+    padding: 10px;
+    position: sticky;
+}

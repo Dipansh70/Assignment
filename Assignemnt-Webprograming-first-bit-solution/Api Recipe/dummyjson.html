@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Cards</title>
+    <title>Recipe card</title>
 
 <style>
     body{
@@ -13,7 +13,7 @@
 
     button{
         padding:10px 20px;
-        margin:20px;
+        margin:10px;
         font-size:16px;
         cursor:pointer;
     }
@@ -44,14 +44,16 @@
         margin:10px 0;
     }
 
-    .ingredients{
+    .ingredients,
+    .steps{
         display:none;
         padding:10px;
         background:#fafafa;
         text-align:left;
     }
 
-    .ingredients div{
+    .ingredients div,
+    .steps div{
         font-size:14px;
         margin:4px 0;
     }
@@ -66,21 +68,25 @@
     }
 </style>
 </head>
+
 <body>
 
-<button onclick="displayOnData()"> Display All Food Items </button>
+<button onclick="displayOnData()">Display All Food Items</button>
 
 <div id="content"></div>
 
 <script>
 
-function displayOnData(){
-    fetch("https://dummyjson.com/recipes")
-    .then(res => res.json())
-    .then(data => displaypage(data));
-}
+    // Fetch data
+    function displayOnData(){
+        fetch("https://dummyjson.com/recipes")
+        .then(res => res.json())
+        .then(data => displaypage(data));
+    }
 
+// Display cards
 function displaypage(data){
+
     let html = "";
 
     for(let i = 0; i < data.recipes.length; i++){
@@ -90,6 +96,7 @@ function displaypage(data){
         <div class="card">
             <img src="${r.image}">
             <h3>${r.name}</h3>
+
             <button class="show-btn" onclick="toggleIngredients(${r.id})">
                 Show Ingredients
             </button>
@@ -97,8 +104,22 @@ function displaypage(data){
             <div class="ingredients" id="ing-${r.id}">
         `;
 
-        for(let j = 0; j < r.ingredients.length; j++){
-            html += `<div>✔ ${r.ingredients[j]}</div>`;
+          for(let j = 0; j < r.ingredients.length; j++){
+             html += `<div>✔ ${r.ingredients[j]}</div>`;
+          }
+
+        html += `
+            </div>
+
+            <button class="show-btn" onclick="toggleSteps(${r.id})">
+                Show Steps
+            </button        >
+
+            <div class="steps" id="step-${r.id}">
+        `;
+
+        for(let k = 0; k < r.instructions.length; k++){
+            html += `<div>➡ ${r.instructions[k]}</div>`;
         }
 
         html += `
@@ -110,17 +131,30 @@ function displaypage(data){
     document.getElementById("content").innerHTML = html;
 }
 
-function toggleIngredients(id){
-    let box = document.getElementById("ing-" + id);
+    // Toggle Ingredients
+    function toggleIngredients(id){
+        let box = document.getElementById("ing-" + id);
 
-    if(box.style.display === "block"){
-        box.style.display = "none";
-    } else {
-        box.style.display = "block";
+        if(box.style.display === "block")
+        {
+            box.style.display = "none";
+        } else {
+            box.style.display = "block";
+        }
     }
-}
+
+    // Toggle Steps
+    function toggleSteps(id){
+        let box = document.getElementById("step-" + id);
+
+        if(box.style.display === "block")
+        {
+            box.style.display = "none";
+       } else {
+            box.style.display = "block";
+        }
+    }
 
 </script>
-
 </body>
 </html>
